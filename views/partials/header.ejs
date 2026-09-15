@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <title><%= pageTitle || "Instituto de Energia PUC-Rio" %></title>
+  <script
+			  src="https://code.jquery.com/jquery-3.7.1.min.js"
+			  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+			  crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="/src/styles.css">
+ 
+
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'puc-blue': '#42929d',
+            'puc-light-blue': '#0066CC',
+            'puc-gold': '#FFD700',
+            'puc-gray': '#666666',
+            'puc-light-gray': '#F5F5F5'
+          },
+          fontFamily: {
+            'puc': ['Arial', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Grid de Matérias */
+    #materias-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* Cards de Matérias */
+    .materia-card {
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #e5e7eb;
+    }
+
+    .materia-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .materia-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: linear-gradient(45deg, #003366, #0066CC);
+    }
+
+    .materia-content {
+      padding: 1.5rem;
+    }
+
+    .materia-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #428f9d;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .materia-meta {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .materia-resumo {
+      font-size: 1rem;
+      color: #374151;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .materia-link {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      background: #42929d;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .materia-link:hover {
+      background: #003366;
+    }
+
+    .materia-link i {
+      margin-left: 0.5rem;
+    }
+
+    /* Animações */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeInUp 1s ease-out;
+    }
+
+    /* Navegação Ativa */
+    .nav-link.active {
+      color: #42929d;
+      font-weight: 500;
+    }
+
+    /* Hover Effects */
+    .feature-card:hover,
+    .course-card:hover,
+    .news-card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* ===== MENU SANFONA MOBILE ===== */
+    .accordion-item {
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .accordion-header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.875rem 0;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .accordion-header:hover {
+      color: #0066CC;
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background-color: #fafafa;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+
+    .accordion-content.active {
+      max-height: 500px;
+    }
+
+    .accordion-chevron {
+      transition: transform 0.3s ease;
+      font-size: 0.75rem;
+      color: #42929d;
+    }
+
+    .accordion-chevron.rotated {
+      transform: rotate(180deg);
+    }
+
+    .accordion-link {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: #666666;
+      transition: all 0.2s ease;
+      border-left: 3px solid transparent;
+    }
+
+    .accordion-link:hover {
+      color: #42929d;
+      background-color: #ffffff;
+      border-left-color: #42929d;
+    }
+
+    /* Menu Mobile Principal */
+    #mobile-menu {
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      #materias-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .materia-content {
+        padding: 1rem;
+      }
+
+      .materia-img {
+        height: 160px;
+      }
+
+      .text-5xl {
+        font-size: 2.5rem;
+      }
+
+      .text-xl {
+        font-size: 1.125rem;
+      }
+    }
+
+  @media (max-width: 639px) {
+  #home .flex {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  #home .flex a {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+  }
+}
+
+  </style>
+
+ <style>
+        /* ========================================
+           SISTEMA DE ACESSIBILIDADE MODULAR
+           
+           ======================================== */
+        
+        :root {
+            --acc-primary: #2c3e50;
+            --acc-secondary: #3498db;
+            --acc-accent: #e74c3c;
+            --acc-success: #27ae60;
+            --acc-bg: #ffffff;
+            --acc-text: #333333;
+            --acc-border: #e0e0e0;
+            --acc-shadow: rgba(0, 0, 0, 0.15);
+            --acc-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .a11y-widget {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            z-index: 999999;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 14px;
+        }
+
+        .a11y-toggle {
+            background: var(--acc-primary);
+            color: white;
+            border: none;
+            border-radius: 12px 0 0 12px;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: -3px 0 12px var(--acc-shadow);
+            transition: var(--acc-transition);
+            font-size: 24px;
+            position: relative;
+        }
+
+        .a11y-toggle:hover {
+            background: var(--acc-secondary);
+            width: 64px;
+            box-shadow: -5px 0 20px var(--acc-shadow);
+        }
+
+        .a11y-toggle:focus {
+            outline: 3px solid var(--acc-secondary);
+            outline-offset: 2px;
+        }
+
+        .a11y-toggle::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 8px;
+            height: 8px;
+            background: var(--acc-success);
+            border-radius: 50%;
+            opacity: 0;
+            transition: var(--acc-transition);
+        }
+
+        .a11y-toggle.has-settings::after {
+            opacity: 1;
+        }
+
+        .a11y-panel {
+            background: var(--acc-bg);
+            border-radius: 12px 0 0 12px;
+            box-shadow: -5px 0 25px var(--acc-shadow);
+            padding: 24px;
+            width: 0;
+            max-height: 80vh;
+            overflow: hidden;
+            opacity: 0;
+            transition: var(--acc-transition);
+            position: absolute;
+            right: 56px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .a11y-panel.active {
+            width: 320px;
+            opacity: 1;
+            overflow-y: auto;
+        }
+
+        .a11y-panel::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .a11y-panel::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .a11y-panel::-webkit-scrollbar-thumb {
+            background: var(--acc-border);
+            border-radius: 3px;
+        }
+
+        .a11y-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--acc-border);
+        }
+
+        .a11y-header h3 {
+            margin: 0;
+            color: var(--acc-primary);
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .a11y-close {
+            background: transparent;
+            border: none;
+            color: var(--acc-text);
+            cursor: pointer;
+            font-size: 20px;
+            padding: 4px;
+            opacity: 0.6;
+            transition: var(--acc-transition);
+        }
+
+        .a11y-close:hover {
+            opacity: 1;
+            color: var(--acc-accent);
+        }
+
+        .a11y-section {
+            margin-bottom: 20px;
+        }
+
+        .a11y-section-title {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--acc-text);
+            opacity: 0.7;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .a11y-options {
+            display: grid;
+            gap: 8px;
+        }
+
+        .a11y-option {
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            padding: 14px 16px;
+            cursor: pointer;
+            transition: var(--acc-transition);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-align: left;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .a11y-option::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: var(--acc-secondary);
+            transform: scaleY(0);
+            transition: var(--acc-transition);
+        }
+
+        .a11y-option:hover {
+            background: #e9ecef;
+            transform: translateX(-4px);
+        }
+
+        .a11y-option:hover::before {
+            transform: scaleY(1);
+        }
+
+        .a11y-option.active {
+            background: var(--acc-secondary);
+            color: white;
+            border-color: var(--acc-secondary);
+        }
+
+        .a11y-option.active::before {
+            background: white;
+            transform: scaleY(1);
+        }
+
+        .a11y-option i {
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .a11y-option-text {
+            flex: 1;
+        }
+
+        .a11y-option-label {
+            display: block;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .a11y-option-desc {
+            display: block;
+            font-size: 11px;
+            opacity: 0.8;
+            margin-top: 2px;
+        }
+
+        .a11y-option.active .a11y-option-desc {
+            opacity: 0.9;
+        }
+
+        .a11y-reset {
+            background: var(--acc-accent);
+            color: white;
+            width: 100%;
+            margin-top: 12px;
+        }
+
+        .a11y-reset:hover {
+            background: #c0392b;
+        }
+
+        .a11y-reset:hover::before {
+            background: white;
+        }
+
+        /* Estados de acessibilidade aplicados ao body */
+        body.a11y-high-contrast {
+            background-color: #000 !important;
+            color: #fff !important;
+        }
+
+        body.a11y-high-contrast *:not(.a11y-widget *):not(.a11y-widget) {
+            background-color: #000 !important;
+            color: #fff !important;
+            border-color: #fff !important;
+        }
+
+        body.a11y-high-contrast a {
+            color: #4da6ff !important;
+            text-decoration: underline !important;
+        }
+
+        body.a11y-dyslexia {
+            font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', 'Lexend', sans-serif !important;
+            letter-spacing: 0.12em !important;
+            word-spacing: 0.16em !important;
+            line-height: 1.8 !important;
+        }
+
+        body.a11y-large-text {
+            font-size: 118% !important;
+        }
+
+        body.a11y-larger-text {
+            font-size: 136% !important;
+        }
+
+        body.a11y-grayscale *:not(.a11y-widget):not(.a11y-widget *) {
+            filter: grayscale(100%);
+        }
+        
+        /* Garantir que o widget permaneça fixo */
+        .a11y-widget {
+            filter: none !important;
+        }
+
+        body.a11y-underline-links a {
+            text-decoration: underline !important;
+        }
+
+        body.a11y-reading-guide {
+            cursor: crosshair;
+        }
+
+        .a11y-reading-line {
+            position: fixed;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--acc-accent);
+            pointer-events: none;
+            z-index: 999998;
+            box-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
+            display: none;
+        }
+
+        body.a11y-reading-guide .a11y-reading-line {
+            display: block;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .a11y-panel.active {
+                width: 280px;
+            }
+            
+            .a11y-toggle {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .a11y-widget {
+                top: auto;
+                bottom: 20px;
+                right: 20px;
+                transform: none;
+            }
+
+            .a11y-toggle {
+                border-radius: 50%;
+            }
+            
+            .a11y-panel {
+                right: 0;
+                bottom: 70px;
+                top: auto;
+                transform: none;
+                border-radius: 12px;
+                max-height: 60vh;
+            }
+
+            .a11y-panel.active {
+                width: calc(100vw - 40px);
+            }
+        }
+
+        /* ========================================
+           FIM DO SISTEMA DE ACESSIBILIDADE
+           ======================================== */
+
+        /* Exemplo de conteúdo (remover em produção) */
+        .demo-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .demo-content h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .demo-content p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .demo-content a {
+            color: #3498db;
+        }
+    </style>
+
+</head>
+
+<body class="font-puc bg-white">
+  <!-- Cabeçalho Padrão PUC-Rio -->
+  <header class="bg-white border-b border-gray-200">
+    <!-- Barra Superior PUC-Rio -->
+    <div class="bg-puc-blue text-white">
+      <div class="max-w-7xl mx-auto px-4 py-1">
+        <div class="flex justify-between items-center text-xs">
+          <div class="flex space-x-4">
+            <a href="https://www.puc-rio.br" class="hover:text-puc-gold transition-colors" aria-label="PUC-Rio">Portal PUC-Rio</a>
+            <a href="https://www.dbd.puc-rio.br/sitenovo/index.php#aviso" class="hover:text-puc-gold transition-colors">Biblioteca</a>
+            <a href="https://www.puc-rio.br/puconline/" class="hover:text-puc-gold transition-colors">PUC Online</a>
+            <a href="https://www.puc-rio.br/vestibular/" class="hover:text-puc-gold transition-colors">Vestibular</a>
+          </div>
+          <div class="flex items-center space-x-2">
+            <span class="text-xs">Siga-nos:</span>
+            <a href="https://www.instagram.com/institutodeenergiaiepuc/" target="_blank" class="hover:text-puc-gold transition-colors" aria-label="Instagram">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+            <a href="https://www.youtube.com/@iepuc-rio" target="_blank" class="hover:text-puc-gold transition-colors" aria-label="YouTube">
+              <i class="fab fa-youtube text-sm" title="Canal do Youtube"></i>
+            </a>
+            <a href="https://br.linkedin.com/company/iepuc-rio" target="_blank" class="hover:text-puc-white transition-colors">
+              <i class="fab fa-linkedin text-lg"></i>
+            </a> 
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cabeçalho Principal com Brasão PUC-Rio -->
+    <div class="bg-white">
+      <div class="max-w-7xl mx-auto px-4 py-4">
+        <div class="flex items-center justify-between">
+          <!-- Brasão e Identificação PUC-Rio -->
+          <div class="flex items-center space-x-6">
+            <a href="https://www.puc-rio.br" class="flex items-center space-x-3">
+              <!-- Brasão PUC-Rio SVG -->
+               <div class="w-20 h-20">
+            <img src="https://www.puc-rio.br//imagens/brasao_preto_vertical.svg" alt="Brasão PUC-Rio" class="max-h-20 md:max-h-20 w-auto object-contain">
+        </div>
+            </a>
+
+            <!-- Separador -->
+            <div class="h-12 w-px bg-gray-300"></div>
+
+            <!-- Identificação do Instituto -->
+            <div class="text-puc-black">
+              <div class="w-16 h-16">
+           <img src="https://www.iepuc.puc-rio.br//imagens/LogoIEPUC-PB.png" alt="Logo IEPUC" class="w-full h-auto object-contain max-w-[80px] md:max-w-[120px]">
+       </div>
+              <h3 class="text-xl font-bold">Instituto de Energia</h3>
+            </div>
+          </div>
+
+          <!-- Menu Mobile Button -->
+          <button id="mobile-menu-button" class="md:hidden text-puc-blue" aria-label="Menu Mobile">
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+
+          <!-- Navegação Desktop -->
+          <nav class="hidden md:block">
+            <ul class="flex space-x-6">
+              <li><a href="/" class="nav-link text-puc-blue hover:text-puc-light-blue transition-colors font-medium">Início</a></li>
+              <li><a href="/institucional.html" class="nav-link text-puc-blue hover:text-puc-light-blue transition-colors font-medium">Institucional</a></li>
+              <li class="relative group">
+                <a href="#" class="nav-link text-puc-blue hover:text-puc-light-blue transition-colors font-medium flex items-center">
+                    Pesquisa <i class="fas fa-chevron-down ml-1 text-xs"></i></a>
+                <div class="absolute z-50 top-full left-0 bg-white text-puc-blue shadow-lg rounded-lg py-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 border">
+                  <a href="/pesquisa/equipe.html" class="block px-4 py-2 hover:bg-puc-light-gray">Equipe</a>
+                  <a href="/pesquisa/projetos.html" class="block px-4 py-2 hover:bg-puc-light-gray">Projetos</a>
+                </div>
+              <li class="relative group">
+                <a href="#" class="nav-link text-puc-blue hover:text-puc-light-blue transition-colors font-medium flex items-center">
+                    Publicações <i class="fas fa-chevron-down ml-1 text-xs"></i></a>
+                <div class="absolute z-50 top-full left-0 bg-white text-puc-blue shadow-lg rounded-lg py-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 border">
+                  <a href="/publicacoes/boletim-biometano.html" class="block px-4 py-2 hover:bg-puc-light-gray">Boletim Biometano</a>
+                  
+                </div>
+              </li>
+              <li><a href="/#nossosCursos" class="nav-link text-puc-blue hover:text-puc-light-blue transition-colors font-medium">Cursos</a></li>
+              <li><a href="/iepucnamidia/iepucnamidia.html" class="nav-link text-puc-blue hover:text-puc-light-blue transition-colors font-medium">IEPUC na Mídia</a></li>
+              <li><a href="/#seminarios" class="nav-link text-puc-blue hover:text-puc-light-blue transition-colors font-medium">Eventos</a></li>
+              <li><a href="/#cop30" class="nav-link text-puc-blue hover:text-puc-light-blue transition-colors font-medium">COP 30</a></li>
+
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu Mobile Sanfona -->
+    <div id="mobile-menu" class="hidden md:hidden bg-puc-light-gray border-t">
+      <nav class="px-4 py-3">
+        <ul class="space-y-1">
+          <li class="accordion-item">
+            <a href="/index.html" class="accordion-header text-puc-blue hover:text-puc-light-blue font-medium">
+              Início
+            </a>
+          </li>
+          
+          <li class="accordion-item">
+            <a href="/institucional.html" class="accordion-header text-puc-blue hover:text-puc-light-blue font-medium">
+              Institucional
+            </a>
+          </li>
+          
+          <!-- Item Pesquisa com Submenu Sanfona -->
+          <li class="accordion-item">
+            <button class="accordion-header text-puc-blue hover:text-puc-light-blue font-medium" data-accordion="pesquisa">
+              <span>Pesquisa</span>
+              <i class="fas fa-chevron-down accordion-chevron"></i>
+            </button>
+            <div id="pesquisa-accordion" class="accordion-content">
+              <a href="/pesquisa/equipe.html" class="accordion-link">Equipe</a>
+              <a href="/pesquisa/projetos.html" class="accordion-link">Projetos</a>
+            </div>
+          </li>
+
+          <li class="accordion-item">
+            <a href="/index.html#nossosCursos" class="accordion-header text-puc-blue hover:text-puc-light-blue font-medium">
+              Cursos
+            </a>
+          </li>
+          
+          <li class="accordion-item">
+            <a href="/iepucnamidia/iepucnamidia.html" class="accordion-header text-puc-blue hover:text-puc-light-blue font-medium">
+              IEPUC na Mídia
+            </a>
+          </li>
+          
+          <li class="accordion-item">
+            <a href="/index.html#seminarios" class="accordion-header text-puc-blue hover:text-puc-light-blue font-medium">
+              Eventos
+            </a>
+          </li>
+
+          <li class="accordion-item">
+            <a href="/index.html#cop30" class="accordion-header text-puc-blue hover:text-puc-light-blue font-medium">
+              COP 30
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <div class="gtranslate_wrapper"></div>
+  <script>window.gtranslateSettings = {"default_language":"pt","native_language_names":true,"detect_browser_language":true,"languages":["pt","en"],"wrapper_selector":".gtranslate_wrapper","flag_size":24,"horizontal_position":"right","vertical_position":"top","alt_flags":{"en":"usa","pt":"brazil"}}</script>
+  <script src="https://cdn.gtranslate.net/widgets/latest/flags.js" defer></script>
+
+  <script>
+    // Script do Menu Sanfona Mobile
+    document.addEventListener("DOMContentLoaded", () => {
+      // Toggle do menu mobile principal
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+      
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+      }
+
+      // Accordion para submenus
+      const accordionButtons = document.querySelectorAll("[data-accordion]");
+      
+      accordionButtons.forEach((button) => {
+        button.addEventListener("click", (e) => {
+          e.preventDefault();
+          
+          const accordionId = button.getAttribute("data-accordion");
+          const accordionContent = document.getElementById(`${accordionId}-accordion`);
+          const chevron = button.querySelector(".accordion-chevron");
+          
+          // Fecha outros accordions (opcional - remova se quiser permitir múltiplos abertos)
+          document.querySelectorAll(".accordion-content").forEach((content) => {
+            if (content !== accordionContent && content.classList.contains("active")) {
+              content.classList.remove("active");
+              const otherChevron = content.previousElementSibling?.querySelector(".accordion-chevron");
+              if (otherChevron) otherChevron.classList.remove("rotated");
+            }
+          });
+          
+          // Toggle do accordion atual
+          if (accordionContent) {
+            accordionContent.classList.toggle("active");
+          }
+          
+          if (chevron) {
+            chevron.classList.toggle("rotated");
+          }
+        });
+      });
+    });
+  </script>
+  
+
+  <!-- ========================================
+         WIDGET DE ACESSIBILIDADE
+         Copie este bloco HTML para seu site
+         ======================================== -->
+    <div class="a11y-widget" role="region" aria-label="Opções de acessibilidade">
+        <div class="a11y-panel" id="a11yPanel" role="dialog" aria-labelledby="a11yTitle">
+            <div class="a11y-header">
+                <h3 id="a11yTitle">Acessibilidade</h3>
+                <button class="a11y-close" id="a11yClose" aria-label="Fechar painel">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="a11y-keyboard-hint">
+                <i class="fas fa-keyboard"></i>
+                <span>Atalho: <kbd>Alt + A</kbd></span>
+            </div>
+
+            <div class="a11y-section">
+                <div class="a11y-section-title">Tamanho do Texto</div>
+                <div class="a11y-options">
+                    <button class="a11y-option" id="a11yIncreaseFont" aria-pressed="false">
+                        <i class="fas fa-plus"></i>
+                        <span class="a11y-option-text">
+                            <span class="a11y-option-label">Aumentar Texto</span>
+                            <span class="a11y-option-desc">Fonte até 36% maior • Alt+1</span>
+                        </span>
+                    </button>
+                    <button class="a11y-option" id="a11yDecreaseFont" aria-pressed="false">
+                        <i class="fas fa-minus"></i>
+                        <span class="a11y-option-text">
+                            <span class="a11y-option-label">Diminuir Texto</span>
+                            <span class="a11y-option-desc">Retornar ao tamanho original • Alt+2</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="a11y-section">
+                <div class="a11y-section-title">Contraste e Cores</div>
+                <div class="a11y-options">
+                    <button class="a11y-option" id="a11yHighContrast" aria-pressed="false">
+                        <i class="fas fa-adjust"></i>
+                        <span class="a11y-option-text">
+                            <span class="a11y-option-label">Alto Contraste</span>
+                            <span class="a11y-option-desc">Preto e branco • Alt+C</span>
+                        </span>
+                    </button>
+                    <button class="a11y-option" id="a11yGrayscale" aria-pressed="false">
+                        <i class="fas fa-palette"></i>
+                        <span class="a11y-option-text">
+                            <span class="a11y-option-label">Escala de Cinza</span>
+                            <span class="a11y-option-desc">Remove todas as cores • Alt+G</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="a11y-section">
+                <div class="a11y-section-title">Leitura</div>
+                <div class="a11y-options">
+                    <button class="a11y-option" id="a11yDyslexia" aria-pressed="false">
+                        <i class="fas fa-font"></i>
+                        <span class="a11y-option-text">
+                            <span class="a11y-option-label">Fonte Dislexia</span>
+                            <span class="a11y-option-desc">Fonte e espaçamento facilitados • Alt+D</span>
+                        </span>
+                    </button>
+                    <button class="a11y-option" id="a11yUnderlineLinks" aria-pressed="false">
+                        <i class="fas fa-link"></i>
+                        <span class="a11y-option-text">
+                            <span class="a11y-option-label">Sublinhar Links</span>
+                            <span class="a11y-option-desc">Destaca todos os links • Alt+L</span>
+                        </span>
+                    </button>
+                    <button class="a11y-option" id="a11yReadingGuide" aria-pressed="false">
+                        <i class="fas fa-grip-lines"></i>
+                        <span class="a11y-option-text">
+                            <span class="a11y-option-label">Guia de Leitura</span>
+                            <span class="a11y-option-desc">Linha que segue o mouse • Alt+R</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <button class="a11y-option a11y-reset" id="a11yReset">
+                <i class="fas fa-undo"></i>
+                <span class="a11y-option-text">
+                    <span class="a11y-option-label">Redefinir Tudo • Alt+0</span>
+                </span>
+            </button>
+        </div>
+
+        <button class="a11y-toggle" id="a11yToggle" aria-label="Abrir opções de acessibilidade" aria-expanded="false">
+            <i class="fas fa-universal-access"></i>
+        </button>
+    </div>
+
+    <div class="a11y-reading-line" id="a11yReadingLine"></div>
+    <!-- FIM DO WIDGET DE ACESSIBILIDADE -->
+
+       <!-- ========================================
+         JAVASCRIPT DO WIDGET
+         Copie este script para seu site
+         ======================================== -->
+      <script>
+        (function() {
+            'use strict';
+
+            const A11Y = {
+                toggle: document.getElementById('a11yToggle'),
+                panel: document.getElementById('a11yPanel'),
+                close: document.getElementById('a11yClose'),
+                increaseFont: document.getElementById('a11yIncreaseFont'),
+                decreaseFont: document.getElementById('a11yDecreaseFont'),
+                highContrast: document.getElementById('a11yHighContrast'),
+                dyslexia: document.getElementById('a11yDyslexia'),
+                grayscale: document.getElementById('a11yGrayscale'),
+                underlineLinks: document.getElementById('a11yUnderlineLinks'),
+                readingGuide: document.getElementById('a11yReadingGuide'),
+                readingLine: document.getElementById('a11yReadingLine'),
+                reset: document.getElementById('a11yReset'),
+                body: document.body,
+                fontLevel: 0
+            };
+
+            // Carregar configurações salvas
+            function loadSettings() {
+                const settings = JSON.parse(localStorage.getItem('a11ySettings') || '{}');
+                
+                A11Y.fontLevel = settings.fontLevel || 0;
+                updateFontSize();
+
+                if (settings.highContrast) toggleHighContrast(true);
+                if (settings.dyslexia) toggleDyslexia(true);
+                if (settings.grayscale) toggleGrayscale(true);
+                if (settings.underlineLinks) toggleUnderlineLinks(true);
+                if (settings.readingGuide) toggleReadingGuide(true);
+
+                updateToggleIndicator();
+            }
+
+            // Salvar configurações
+            function saveSettings() {
+                const settings = {
+                    fontLevel: A11Y.fontLevel,
+                    highContrast: A11Y.body.classList.contains('a11y-high-contrast'),
+                    dyslexia: A11Y.body.classList.contains('a11y-dyslexia'),
+                    grayscale: A11Y.body.classList.contains('a11y-grayscale'),
+                    underlineLinks: A11Y.body.classList.contains('a11y-underline-links'),
+                    readingGuide: A11Y.body.classList.contains('a11y-reading-guide')
+                };
+                localStorage.setItem('a11ySettings', JSON.stringify(settings));
+                updateToggleIndicator();
+            }
+
+            // Atualizar indicador visual do toggle
+            function updateToggleIndicator() {
+                const hasSettings = A11Y.fontLevel !== 0 || 
+                    A11Y.body.classList.contains('a11y-high-contrast') ||
+                    A11Y.body.classList.contains('a11y-dyslexia') ||
+                    A11Y.body.classList.contains('a11y-grayscale') ||
+                    A11Y.body.classList.contains('a11y-underline-links') ||
+                    A11Y.body.classList.contains('a11y-reading-guide');
+                
+                A11Y.toggle.classList.toggle('has-settings', hasSettings);
+            }
+
+            // Toggle do painel
+            function togglePanel() {
+                const isActive = A11Y.panel.classList.toggle('active');
+                A11Y.toggle.setAttribute('aria-expanded', isActive);
+            }
+
+            // Aumentar fonte
+            function increaseFont() {
+                if (A11Y.fontLevel < 2) {
+                    A11Y.fontLevel++;
+                    updateFontSize();
+                    saveSettings();
+                }
+            }
+
+            // Diminuir fonte
+            function decreaseFont() {
+                if (A11Y.fontLevel > 0) {
+                    A11Y.fontLevel--;
+                    updateFontSize();
+                    saveSettings();
+                }
+            }
+
+            // Atualizar tamanho da fonte
+            function updateFontSize() {
+                A11Y.body.classList.remove('a11y-large-text', 'a11y-larger-text');
+                
+                if (A11Y.fontLevel === 1) {
+                    A11Y.body.classList.add('a11y-large-text');
+                } else if (A11Y.fontLevel === 2) {
+                    A11Y.body.classList.add('a11y-larger-text');
+                }
+
+                updateButtonState(A11Y.increaseFont, A11Y.fontLevel > 0);
+                updateButtonState(A11Y.decreaseFont, A11Y.fontLevel > 0);
+            }
+
+            // Toggle alto contraste
+            function toggleHighContrast(skipSave) {
+                A11Y.body.classList.toggle('a11y-high-contrast');
+                updateButtonState(A11Y.highContrast);
+                if (!skipSave) saveSettings();
+            }
+
+            // Toggle fonte dislexia
+            function toggleDyslexia(skipSave) {
+                A11Y.body.classList.toggle('a11y-dyslexia');
+                updateButtonState(A11Y.dyslexia);
+                if (!skipSave) saveSettings();
+            }
+
+            // Toggle escala de cinza
+            function toggleGrayscale(skipSave) {
+                A11Y.body.classList.toggle('a11y-grayscale');
+                updateButtonState(A11Y.grayscale);
+                if (!skipSave) saveSettings();
+            }
+
+            // Toggle sublinhar links
+            function toggleUnderlineLinks(skipSave) {
+                A11Y.body.classList.toggle('a11y-underline-links');
+                updateButtonState(A11Y.underlineLinks);
+                if (!skipSave) saveSettings();
+            }
+
+            // Toggle guia de leitura
+            function toggleReadingGuide(skipSave) {
+                A11Y.body.classList.toggle('a11y-reading-guide');
+                updateButtonState(A11Y.readingGuide);
+                if (!skipSave) saveSettings();
+            }
+
+            // Atualizar movimento da linha de leitura
+            function updateReadingLine(e) {
+                if (A11Y.body.classList.contains('a11y-reading-guide')) {
+                    A11Y.readingLine.style.top = e.clientY + 'px';
+                }
+            }
+
+            // Atualizar estado visual do botão
+            function updateButtonState(button, forceActive) {
+                const isActive = forceActive !== undefined ? forceActive : A11Y.body.classList.contains(button.dataset.class);
+                button.classList.toggle('active', isActive);
+                button.setAttribute('aria-pressed', isActive);
+            }
+
+            // Resetar tudo
+            function resetAll() {
+                A11Y.fontLevel = 0;
+                A11Y.body.classList.remove(
+                    'a11y-large-text',
+                    'a11y-larger-text',
+                    'a11y-high-contrast',
+                    'a11y-dyslexia',
+                    'a11y-grayscale',
+                    'a11y-underline-links',
+                    'a11y-reading-guide'
+                );
+
+                document.querySelectorAll('.a11y-option').forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-pressed', 'false');
+                });
+
+                localStorage.removeItem('a11ySettings');
+                updateToggleIndicator();
+            }
+
+            // Event Listeners
+            A11Y.toggle.addEventListener('click', togglePanel);
+            A11Y.close.addEventListener('click', togglePanel);
+            A11Y.increaseFont.addEventListener('click', increaseFont);
+            A11Y.decreaseFont.addEventListener('click', decreaseFont);
+            A11Y.highContrast.addEventListener('click', () => toggleHighContrast());
+            A11Y.dyslexia.addEventListener('click', () => toggleDyslexia());
+            A11Y.grayscale.addEventListener('click', () => toggleGrayscale());
+            A11Y.underlineLinks.addEventListener('click', () => toggleUnderlineLinks());
+            A11Y.readingGuide.addEventListener('click', () => toggleReadingGuide());
+            A11Y.reset.addEventListener('click', resetAll);
+
+            // Movimento da linha de leitura
+            document.addEventListener('mousemove', updateReadingLine);
+
+            // Fechar ao clicar fora
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.a11y-widget') && A11Y.panel.classList.contains('active')) {
+                    togglePanel();
+                }
+            });
+
+            // Atalhos de teclado
+            document.addEventListener('keydown', (e) => {
+                // Alt + A: Abrir/Fechar painel
+                if (e.altKey && e.key.toLowerCase() === 'a') {
+                    e.preventDefault();
+                    togglePanel();
+                }
+                
+                // Alt + 1: Aumentar texto
+                if (e.altKey && e.key === '1') {
+                    e.preventDefault();
+                    increaseFont();
+                }
+                
+                // Alt + 2: Diminuir texto
+                if (e.altKey && e.key === '2') {
+                    e.preventDefault();
+                    decreaseFont();
+                }
+                
+                // Alt + C: Alto contraste
+                if (e.altKey && e.key.toLowerCase() === 'c') {
+                    e.preventDefault();
+                    toggleHighContrast();
+                }
+                
+                // Alt + D: Fonte dislexia
+                if (e.altKey && e.key.toLowerCase() === 'd') {
+                    e.preventDefault();
+                    toggleDyslexia();
+                }
+                
+                // Alt + G: Escala de cinza
+                if (e.altKey && e.key.toLowerCase() === 'g') {
+                    e.preventDefault();
+                    toggleGrayscale();
+                }
+                
+                // Alt + L: Sublinhar links
+                if (e.altKey && e.key.toLowerCase() === 'l') {
+                    e.preventDefault();
+                    toggleUnderlineLinks();
+                }
+                
+                // Alt + R: Guia de leitura
+                if (e.altKey && e.key.toLowerCase() === 'r') {
+                    e.preventDefault();
+                    toggleReadingGuide();
+                }
+                
+                // Alt + 0: Resetar tudo
+                if (e.altKey && e.key === '0') {
+                    e.preventDefault();
+                    resetAll();
+                }
+                
+                // ESC: Fechar painel se estiver aberto
+                if (e.key === 'Escape' && A11Y.panel.classList.contains('active')) {
+                    togglePanel();
+                }
+            });
+
+            // Inicializar
+            loadSettings();
+        })();
+    </script>
+
+  <main>

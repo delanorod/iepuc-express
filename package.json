@@ -1,0 +1,25 @@
+{
+  "name": "iepuc-express",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Migração do site IEPUC para Node.js + Express + EJS",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+   
+    "test:routes": "node tests/route-audit.js",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:report": "playwright show-report"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1"
+  }
+}

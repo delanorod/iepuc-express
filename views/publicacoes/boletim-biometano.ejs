@@ -1,0 +1,129 @@
+<% const pageTitle = "Página Inicial"; %>
+<%- include("../partials/header", { pageTitle: pageTitle }) %>
+<link rel="stylesheet" href="/src/styles.css">
+
+  <!-- <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script> -->
+
+
+<p class="text-gray-600 text-sm mt-2 mb-4">Última atualização: 27/08/2026</p>
+<div class="container mx-auto px-4 py-8 text-center">   
+    <h2 class="text-3xl font-bold text-cyan-600 mb-4 titulo-destaque">Boletim Mensal de Acompanhamento da Indústria de Biometano no Brasil</h2>
+    <p class="text-gray-600 w-full mb-8">O Boletim Mensal de Acompanhamento da Indústria de Biometano no Brasil é uma publicação periódica do Instituto de Energia da PUC-Rio dedicada ao monitoramento da evolução do setor no país. A publicação reúne informações e análises sobre a oferta e a comercialização de biometano, as políticas públicas de incentivo à produção e as principais referências de preços. Seu objetivo é fornecer a profissionais do setor, pesquisadores e demais interessados uma visão atualizada da dinâmica e das principais tendências do mercado brasileiro de biometano.</p>
+
+<!--      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap8">
+         <button class="w-60 h-60 bg-gray-100 text-gray-700 font-semibold border border-gray-300 rounded-xl hover:bg-blue-600 hover:text-white transition">
+    2026
+</button>
+<button class="w-60 h-60 bg-gray-100 text-gray-700 font-semibold border border-gray-300 rounded-xl hover:bg-blue-600 hover:text-white transition">
+    2025
+</button>
+</div>
+ -->
+
+
+<div class="w-full overflow-x-auto">
+
+    <table class="w-full border-collapse text-left text-sm">
+
+        <thead>
+            <tr class="border-b border-gray-300">
+                <th class="px-4 py-3 font-semibold text-gray-700">
+                    Título
+                </th>
+
+                <th class="px-4 py-3 font-semibold text-gray-700">
+                    Tipo
+                </th>
+
+                <th class="px-4 py-3 font-semibold text-gray-700">
+                    Data de modificação
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr class="border-b border-gray-200 hover:bg-gray-50">
+                <td class="px-4 py-3">
+                    <a href="https://www.iepuc.puc-rio.br/arquivos/boletim-biometano/07_Boletim_Biometano_IEPUC_jul_2026.pdf" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline">
+                        07 - Boletim de Acompanhamento da Indústria de Biometano - Julho de 2026
+                    </a>
+                </td>
+
+                <td class="px-4 py-3 text-gray-600">
+                    Arquivo
+                </td>
+
+                <td class="px-4 py-3 text-gray-600">
+                    27/08/2026 
+                </td>
+            </tr>
+<!-- 
+            <tr class="border-b border-gray-200 hover:bg-gray-50">
+                <td class="px-4 py-3">
+                    <a href="#" class="text-blue-600 hover:text-blue-800 hover:underline">
+                        02. Relatório mensal de mercado fev-24
+                    </a>
+                </td>
+
+                <td class="px-4 py-3 text-gray-600">
+                    Arquivo
+                </td>
+
+                <td class="px-4 py-3 text-gray-600">
+                    25/04/2024 18h16
+                </td>
+            </tr>
+
+            <tr class="border-b border-gray-200 hover:bg-gray-50">
+                <td class="px-4 py-3">
+                    <a href="#" class="text-blue-600 hover:text-blue-800 hover:underline">
+                        03. Relatório mensal de mercado mar-24
+                    </a>
+                </td>
+
+                <td class="px-4 py-3 text-gray-600">
+                    Arquivo
+                </td>
+
+                <td class="px-4 py-3 text-gray-600">
+                    19/08/2024 16h48
+                </td>
+            </tr> -->
+
+        </tbody>
+
+    </table>
+
+</div>
+<!-- 
+
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Exemplo de boletins -->
+        
+        <!-- <div class="bg-white shadow-md rounded-lg overflow-hidden">
+            <img src="/src/images/boletim1.jpg" alt="Boletim 1" class="w-full h-48 object-cover">
+            <div class="p-4">
+                <h3 class="text-xl font-semibold mb-2">Edição 01 - Janeiro 2024</h3>
+                <p class="text-gray-600 mb-4">Nesta edição, abordamos os principais desafios para a expansão do biometano no Brasil, incluindo políticas públicas e incentivos fiscais.</p>
+                <a href="/src/boletins/boletim_01.pdf" target="_blank" class="text-blue-700 hover:underline">Leia mais</a>
+            </div>
+        </div>
+
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+            <img src="/src/images/boletim2.jpg" alt="Boletim 2" class="w-full h-48 object-cover">
+            <div class="p-4">
+                <h3 class="text-xl font-semibold mb-2">Edição 02 - Fevereiro 2024</h3>
+                <p class="text-gray-600 mb-4">Nesta edição, exploramos as oportunidades de mercado para o biometano na indústria de transporte e logística.</p>
+                <a href="/src/boletins/boletim_02.pdf" target="_blank" class="text-blue-700 hover:underline">Leia mais</a>
+            </div> -->
+ 
+<div class="container mx-auto px-4 py-2 flex justify-end">
+  <%- include("../partials/voltar") %>
+
+</div>
+<br>
+
+<%- include("../partials/footer") %>

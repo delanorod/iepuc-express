@@ -1,0 +1,761 @@
+<% const pageTitle = "Página Inicial"; %>
+<%- include("partials/header", { pageTitle: pageTitle }) %>
+<!-- versao 27082026v2 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+ <script src="/src/modal.js"></script>
+
+<!-- Carrossel -->
+<section id="carousel" class="relative py-16 bg-white">
+    <div class="max-w-lvw mx-auto my-10 bg-white rounded-lg shadow-lg overflow-hidden">
+    <div class="slider-container">
+        <!-- Slides serão inseridos aqui via JavaScript -->
+    </div>
+
+    <button class="slider-control prev" aria-label="Slide Anterior">&#10094;</button>
+    <button class="slider-control next" aria-label="Próximo Slide">&#10095;</button>
+
+    <div class="slider-indicators">
+        <!-- Indicadores serão inseridos aqui via JavaScript -->
+    </div>
+</div>
+</section>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative bg-gradient-to-r from-primary to-primary-light text-white py-24">
+      <div class="absolute inset-0 bg-cyan-700 opacity-90"></div>
+      <div class="relative max-w-7xl mx-auto px-4 text-center">
+        <div class="animate-fade-in">
+          <h2 class="text-5xl font-bold mb-6">O IEPUC</h2>
+          <p class="text-xl mb-8 max-w-3xl mx-auto">É uma unidade complementar da PUC-Rio vinculada à Vice-Reitoria de Desenvolvimento e Inovação.
+Vem atuando em atendimento às demandas do Setor de energia numa abordagem transversal e  interdisciplinar.
+</p>
+          <a href="#nossosCursos" 
+   class="bg-accent text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent-dark transition-colors inline-block text-center">
+  Conheça Nossos Cursos
+</a>
+            
+             <a href="institucional.html"
+             class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors"> Saiba Mais</a>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- Estatísticas -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Nossos Números</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Desde 2018 formando profissionais qualificados no setor energético</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform duration-300 hover:scale-105 hover:shadow-xl border-t-4 border-primary">
+                <div class="text-4xl mb-4" style="color: #42929d;"><i class="fas fa-users"></i></div>
+                <span class="text-5xl font-bold block mb-2 stat-number" data-target="200" data-show-plus="true" style="color: #42929d;">0</span>
+                <div class="text-xl font-semibold text-gray-800 mb-2">Alunos Formados no M.B.E. Energia</div>
+                <div class=" font-semibold text-gray-600">Pós Graduação Lato Sensu</div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform duration-300 hover:scale-105 hover:shadow-xl border-t-4 border-accent">
+                <div class="text-4xl mb-4" style="color: #D2AB00;"><i class="fas fa-book"></i></div>
+                <span class="text-5xl font-bold block mb-2 stat-number" data-target="350" data-show-plus="true" style="color: #D2AB00;">0</span>
+                <div class="text-xl font-semibold text-gray-800 mb-2">Alunos formados nos Cursos de Capacitação e Extensão</div>
+                <div class="text-gray-600"></div>
+                
+                
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform duration-300 hover:scale-105 hover:shadow-xl border-t-4 border-primary">
+                <div class="text-4xl mb-4" style="color: #42929d;"><i class="fas fa-briefcase"></i></div>
+                <span class="text-5xl font-bold block mb-2 stat-number" data-target="120" data-show-plus="true" style="color: #42929d;">0</span>
+                <div class="text-xl font-semibold text-gray-800 mb-2">Técnicos e executivos participantes nos Cursos In Company</div>
+                <div class="text-gray-600"></div>
+            </div>
+
+            <!-- <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform duration-300 hover:scale-105 hover:shadow-xl border-t-4 border-accent">
+                <div class="text-4xl mb-4" style="color: #D2AB00;"><i class="fas fa-graduation-cap"></i></div>
+                <span class="text-2xl font-bold block mb-2" style="color: #D2AB00;">Disciplina Transição Energética</span>
+                <div class="text-xl font-semibold text-gray-800 mb-2">Graduação e pós-graduação</div>
+                <div onclick="openModal('ModalEmenta')" class="text-gray-600"><a href="#ModalEmenta">Leia a ementa da disciplina</a></div>
+                
+            </div> -->
+        </div>
+        
+    </div>
+</section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-gray-100">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4" style="color: #42929d;">Principais Áreas de Atuação</h2>
+          <!-- <p class="text-gray-600 max-w-2xl mx-auto">Tradição acadêmica aliada à inovação tecnológica para formar líderes no setor energético.</p>
+        </div> -->
+        <p class="text-gray-600 max-w-2xl mx-auto">Para atender demandas do setor da energia numa abordagem transvesal e interdisciplinar</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow feature-card border-b-4 border-primary flex flex-col">
+  <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: #42929d;">
+    <i class="fas fa-water text-2xl text-white"></i>
+  </div>
+  <h3 class="text-xl font-bold mb-4 cursor-pointer hover:text-accent transition-colors" style="color: #42929d;" >
+    Geração Híbrida de Energia
+  </h3>
+  <p class="text-gray-600 flex-grow" >Desenvolvimento de Projetos de PD&I (Pesquisa, Desenvolvimento e Inovação) e prestação de serviços no incremento de estratégias de hibridização da geração.</p>
+  
+  <button data-modal="modalGHE" class="mt-4 bg-primary hover:bg-primary-light text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 transform hover:-translate-y-1" aria-label="Saiba Mais">
+    <i class="fas fa-info-circle mr-2"></i>
+    Saiba Mais
+  </button>
+</div>
+          <div class="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow feature-card border-b-4 border-accent flex flex-col">
+            <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: #D2AB00;">
+              <i class="fas fa-flask text-2xl text-white"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4" style="color: #42929d;">Transição Energética</h3>
+            <p class="text-gray-600 flex-grow">Estudos e inovação voltados para descarbonização da economia e aumento da eficiência energética. Os projetos de pesquisa buscam alinhamento aos compromissos globais, políticas nacionais e oportunidades de inovação e empreendedorismo.
+</p>
+ <button onclick="openModal('ModalTE')" class="mt-4 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 transform hover:-translate-y-1" style="background-color: #42929d;">
+                        <i class="fas fa-info-circle mr-2"></i>
+                        Saiba Mais
+                    </button>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow feature-card border-b-4 border-primary flex flex-col">
+            <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: #42929d;">
+              <i class="fas fa-graduation-cap text-2xl text-white"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4" style="color: #42929d;">Educação Continuada em Energia</h3>
+            <p class="text-gray-600 max-w-2xl mx-auto flex-grow">Tradição acadêmica aliada à inovação tecnológica para formar líderes no setor energético.</p>
+        
+            <p class="text-gray-600">Acreditamos na formação continuada como um importante instrumento de transformação, representando um canal de transferência direta dos conhecimentos para a indústria de energia e reforçando a cooperação e parceria com o mercado e a sociedade. 
+</p>
+<button id="ECE" class="mt-4 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 transform hover:-translate-y-1" style="background-color: #42929d;">
+                        <i class="fas fa-info-circle mr-2"></i>
+                        Saiba Mais
+                    </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="nossosCursos" class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4" style="color: #42929d;">Nossos Cursos</h2>
+          <!-- <p class="text-gray-600 max-w-2xl mx-auto">Programas acadêmicos desenvolvidos para atender às demandas do mercado energético.</p> -->
+        <p class="text-gray-600 max-w-2xl mx-auto">Tradição acadêmica aliada à inovação tecnológica para formar líderes no setor energético.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+          <div class="rounded-xl text-white p-8 course-card" style="background: linear-gradient(135deg, #42929d 0%, #5ba3b2 100%);">
+            <h3 class="text-2xl font-bold mb-4">MBE Energia</h3>
+            <p class="mb-6 text-gray-100">Master Business in Energy - Pós-graduação Lato Sensu voltada para capacitação de profissionais interessados na área de energia.</p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-center"><i class="fas fa-check-circle mr-2" style="color: #D2AB00;"></i> 24 meses de duração</li>
+              <li class="flex items-center"><i class="fas fa-check-circle mr-2" style="color: #D2AB00;"></i> Aulas remotas</li>
+              <li class="flex items-center"><i class="fas fa-check-circle mr-2" style="color: #D2AB00;"></i> Professores especialistas</li>
+            </ul>
+            
+             <a target="_blank" href="https://ccec.puc-rio.br/site/folder?nCurso=mbe-energia&nInst=cce" class="px-6 py-2 rounded-lg font-semibold transition-colors" style="background-color: #D2AB00; color: white;" onmouseover="this.style.backgroundColor='#b8960d'" onmouseout="this.style.backgroundColor='#D2AB00'"> Saiba Mais </a>
+            
+          </div>
+
+          <div class="grid lg:grid-cols-1 gap-8">
+          <div class="rounded-xl text-white p-8 course-card" style="background: linear-gradient(135deg, #42929d 0%, #5ba3b2 100%);">
+            <h3 class="text-2xl font-bold mb-4">Extensão e Capacitação</h3>
+            <p class="mb-6 text-gray-100">Capacitação continuada para profissionais do mercado.</p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-center" ><i class="fas fa-check-circle mr-2" style="color: #D2AB00;"></i> <a class="transition-colors hover:text-yellow-300" href="https://ccec.puc-rio.br/site/folder?nCurso=comercializacao-e-precificacao-do-gas-natural-no-mercado-internacional-e-nacional&nInst=cce" target="_blank" rel="noopener noreferrer"> Comercialização e Precificação do Gás Natural no Mercado Internacional e Nacional</a></li>
+              <li class="flex items-center"><i class="fas fa-check-circle mr-2" style="color: #D2AB00;"></i> <a class="transition-colors hover:text-yellow-300" href="https://ccec.puc-rio.br/site/Folder?nCurso=economia-e-regulacao-da-mudanca-climatica&nInst=CCE" target="_blank" rel="noopener noreferrer"> Economia e Regulação da Mudança Climática</a></li>
+              <li class="flex items-center"><i class="fas fa-check-circle mr-2" style="color: #D2AB00;"></i> <a class="transition-colors hover:text-yellow-300" href="https://ccec.puc-rio.br/site/folder?nCurso=comercializacao-e-precificacao-de-petroleo-e-combustiveis&nInst=cce" target="_blank" rel="noopener noreferrer"> Comercialização e Precificação de Petróleo e Combustíveis</a></li>
+              <li class="flex items-center"><i class="fas fa-check-circle mr-2" style="color: #D2AB00;"></i> <a class="transition-colors hover:text-yellow-300" target="_blank" href="https://ccec.puc-rio.br/site/Folder?nCurso=economia-e-regulacao-do-biometano-no-brasil&nInst=CCE"> Economia e Regulação em Biometano no Brasil</a></li>
+
+            </ul>
+            
+          </div> 
+
+          <!-- <div class="space-y-6">
+            <div class="border rounded-xl p-6 hover:shadow-lg transition-shadow" style="border-color: #42929d;">
+              <h4 class="text-xl font-bold mb-2" style="color: #42929d;">In Company</h4>
+              <p class="text-gray-600 mb-4">Cursos na sua empresa.</p>
+              <button class="font-semibold transition-colors" style="color: #42929d;" onmouseover="this.style.color='#D2AB00'" onmouseout="this.style.color='#42929d'">
+              <a href="mailto:iepuc@puc-rio.br"> Entre em contato </a><i class="fas fa-arrow-right ml-1"></i>
+              </button>
+            </div>
+
+            <div class="border rounded-xl p-6 hover:shadow-lg transition-shadow" style="border-color: #D2AB00;">
+              <h4 class="text-xl font-bold mb-2" style="color: #42929d;">Cursos de Extensão</h4>
+              <p class="text-gray-600 mb-4">Capacitação continuada para profissionais do mercado.</p>
+              <button data-modal="modalCursosExtensao" class="font-semibold transition-colors" style="color: #D2AB00;" onmouseover="this.style.color='#42929d'" onmouseout="this.style.color='#D2AB00'">
+                Ver cursos <i class="fas fa-arrow-right ml-1"></i>
+              </button>
+            </div>
+          </div> -->
+        </div>
+        
+      </div>
+      <div class="border rounded-xl p-6 hover:shadow-lg transition-shadow text-center" style="border-color: #42929d;">
+              <h4 class="text-xl font-bold mb-2" style="color: #42929d;">In Company</h4>
+              <p class="text-gray-600 mb-4">Cursos na sua empresa.</p>
+              
+              <a href="mailto:iepuc@puc-rio.br" class="font-semibold transition-colors" style="color: #42929d;" onmouseover="this.style.color='#D2AB00'" onmouseout="this.style.color='#42929d'"> Entre em contato conosco </a>
+              
+            </div>
+           
+          <!-- Em andamento, mesma seção dos cursos-->
+            <div class="grid md:grid-cols-3 gap-8">
+              <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow news-card border-t-4 border-accent">
+            <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, #D2AB00 0%, #e6c533 100%);">
+              <img class="w-full h-full object-contain" src="/imagens/cursos/01.jpg" alt="Comercialização e Precificação do Gás Natural no Mercado Internacional e Nacional">
+            </div>
+            <div class="p-6">
+              <span class="text-sm font-semibold" style="color: #42929d;"></span>
+              <h3 class="text-xl font-bold mt-2 mb-3" style="color: #42929d;">Curso de Curta Duração</h3>
+              <p class="text-gray-600 mb-4"> Matrículas abertas para a nova turma do curso Comercialização e Precificação do Gás Natural no Mercado Internacional e Nacional.  </p>
+              
+                <a target="_blank" href="https://ccec.puc-rio.br/site/folder?nCurso=comercializacao-e-precificacao-do-gas-natural-no-mercado-internacional-e-nacional&nInst=cce" class="font-semibold transition-colors" style="color: #42929d;" onmouseover="this.style.color='#42929d'" onmouseout="this.style.color='#D2AB00'">Saiba mais </a> 
+                <i class="fas fa-arrow-right ml-1 font-semibold transition-colors" style="color: #42929d;" onmouseover="this.style.color='#42929d'" onmouseout="this.style.color='#D2AB00'"></i>
+              
+            </div>
+          </article>
+
+          <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow news-card border-t-4 border-primary">
+            <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, #42929d 0%, #5ba3b2 100%);">
+              <img src="/imagens/cursos/02.jpg" alt="Amarelo curva" class="w-full h-full object-contain">
+            </div>
+            <div class="p-6">
+              <span class="text-sm font-semibold" style="color: #42929d;"></span>
+              <h3 class="text-xl font-bold mt-2 mb-3" style="color: #42929d;">Curso de Curta Duração</h3>
+              <p class="text-gray-600 mb-4"> Matrículas abertas para a nova turma do curso Economia e Regulação do Biometano no Brasil. </p>
+              
+              <a href="https://ccec.puc-rio.br/site/Folder?nCurso=economia-e-regulacao-do-biometano-no-brasil&nInst=CCE" target="_blank" rel="noopener noreferrer" class="font-semibold transition-colors" style="color: #42929d;" onmouseover="this.style.color='#D2AB00'" onmouseout="this.style.color='#42929d'">Saiba mais</a> <i class="fas fa-arrow-right ml-1 font-semibold transition-colors" style="color: #42929d;" onmouseover="this.style.color='#42929d'" onmouseout="this.style.color='#D2AB00'"></i>
+              
+            </div>
+          </article>
+
+          <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow news-card border-t-4 border-accent">
+            <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, #42929d 0%, #5ba3b2 100%);">
+              <img src="/imagens/cursos/03.jpg" alt="Amarelo curva" class="w-full h-full object-contain">
+            </div>
+            <div class="p-6">
+              <span class="text-sm font-semibold" style="color: #42929d;"></span>
+              <h3 class="text-xl font-bold mt-2 mb-3" style="color: #42929d;">MBE Energia</h3>
+              <p class="text-gray-600 mb-4">Conheça o programa da pós-graduação M.B.E. Energia: uma parceria da PUC-Rio com a UniBP, com a coordenação acadêmica do Instituto de Energia – IEPUC.  </p>
+              
+               <a href="https://www.youtube.com/watch?v=oVPxXTXS9o0" target="_blank" rel="noopener noreferrer" class="font-semibold transition-colors" style="color: #42929d;" onmouseover="this.style.color='#42929d'" onmouseout="this.style.color='#D2AB00'"> Conheça </a><i class="fas fa-arrow-right ml-1 font-semibold transition-colors" style="color: #42929d;" onmouseover="this.style.color='#42929d'" onmouseout="this.style.color='#D2AB00'"></i>
+              
+            </div>
+          </article>
+        </div> 
+
+    </section>
+       
+
+    <!-- IEPUC na Mídia Section -->
+    <section class="py-16 bg-gray-100">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4" style="color: #42929d;">IEPUC na Mídia</h2>
+          <p class="text-gray-600">Acompanhe nossas aparições e contribuições na imprensa.</p>
+        </div>
+
+        <!-- Loading indicator -->
+        <div id="loading-indicator" class="text-center py-8">
+          <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2" style="border-color: #42929d;"></div>
+          <p class="mt-2 text-gray-600">Carregando matérias...</p>
+        </div>
+
+        <!-- Error message -->
+        <div id="error-message" class="hidden text-center py-8">
+          <p class="text-red-500">Erro ao carregar as matérias. Tente novamente mais tarde.</p>
+        </div>
+
+        <!-- Container for articles -->
+        <div id="materias-container" class="hidden"></div>
+      </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4" style="color: #42929d;" id="seminarios">Eventos</h2>
+          <p class="text-gray-600">O IEPUC está presente nos eventos</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          
+                            
+          <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow news-card border-t-4 border-accent">
+            <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, #D2AB00 0%, #e6c533 100%);">
+              <img class="w-full h-full object-contain" src="/imagens/destaque/riw-2026.jpg" alt="Rio Inovation Week 2026">
+            </div>
+            <div class="p-6">
+              <span class="text-sm font-semibold" style="color: #42929d;"></span>
+              <h3 class="text-xl font-bold mt-2 mb-3" style="color: #42929d;">O IEPUC esteve na Rio Innovation Week</h3>
+              <p class="text-gray-600 mb-4">Nosso pesquisador Gustavo Soares participou no dia 06/08/2026, do painel "Biogás: Tecnologia, inovação e competitividade na Transição Energética", no palco Energy Hub SDP da Rio Innovation Week.</p>
+              
+                <a target="_blank" href="https://www.linkedin.com/posts/biogaers-transiaexaetoenergaeztica-rioinnovationweek-ugcPost-7491588256212647936-SrSe/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAASRBWIBfY7Dq8OeYIIaV8SRI4I1T133eCA" class="font-semibold transition-colors" style="color: #42929d;" onmouseover="this.style.color='#42929d'" onmouseout="this.style.color='#D2AB00'">Saiba + </a> 
+                <i class="fas fa-arrow-right ml-1 font-semibold transition-colors" style="color: #42929d;" onmouseover="this.style.color='#42929d'" onmouseout="this.style.color='#D2AB00'"></i>
+              
+            </div>
+          </article>
+
+         
+           <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow news-card border-t-4 border-accent">
+            <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, #42929d 0%, #5ba3b2 100%);">
+              <img class="w-full h-full object-contain" src="/imagens/destaque/munique-2026.jpg" alt="10th International Conference on Power Energy Systems and Applications (ICoPESA 2026)">
+            </div>
+            <div class="p-6">
+              <span class="text-sm font-semibold" style="color: #42929d;"></span>
+              <h3 class="text-xl font-bold mt-2 mb-3" style="color: #42929d;">IEPUC em Munique! </h3>
+              <p class="text-gray-600 mb-4">Os pesquisadores Marco Antonio Haikal Leite e Sergio Castiñeiras Filho representaram o IEPUC na 10th International Conference on Power Energy Systems and Applications (ICoPESA 2026), realizada em Munique, na Alemanha, entre 27 e 30 de julho.</p>
+              
+                <a target="_blank" href="https://www.linkedin.com/posts/iepuc-pucrio-icopesa2026-share-7490864062105292800-CC06/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAASRBWIBfY7Dq8OeYIIaV8SRI4I1T133eCA" class="font-semibold transition-colors" style="color: #42929d;" onmouseover="this.style.color='#42929d'" onmouseout="this.style.color='#D2AB00'">Saiba + </a> 
+                <i class="fas fa-arrow-right ml-1 font-semibold transition-colors" style="color: #42929d;" onmouseover="this.style.color='#42929d'" onmouseout="this.style.color='#D2AB00'"></i>
+              
+            </div>
+          </article>
+
+            
+        </div>
+      </div>
+    </section>
+
+     <!-- COP30 -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4" style="color: #42929d;" id="cop30">COP 30</h2>
+          <p class="text-gray-600"></p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          
+          
+           <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow border-t-4 border-yellow-500 max-w-md mx-auto">
+    <!-- Container de vídeo -->
+            <div class="relative h-48 flex items-center justify-center cursor-pointer group" id="videoContainer">
+  <!-- Thumbnail com imagem de fundo -->
+  <div id="thumbnail" class="absolute inset-0 bg-cover bg-center flex items-center justify-center" 
+       style="background-image: url('/imagens/cop30/cop30-1min.jpg');">
+    <div class="bg-black bg-opacity-40 inset-0 absolute"></div>
+    <div class="text-white text-center relative z-10">
+      <i class="fas fa-play-circle text-6xl opacity-80 group-hover:opacity-100 transition-all transform group-hover:scale-110"></i> 
+      <p class="mt-2 text-sm font-semibold px-4 py-1 bg-black bg-opacity-60 rounded-full">Clique para assistir</p>
+    </div>
+  </div>
+      
+      <!-- Video player (inicialmente escondido) -->
+      <video id="videoPlayer" class="hidden w-full h-full object-contain" controls>
+        <source src="/videos/cop30/cop30-1minuto.mkv" type="video/x-matroska">
+        <source src="/videos/cop30/cop30-1minuto.mp4" type="video/mp4">
+        Seu navegador não suporta o elemento de vídeo.
+      </video>
+    </div>
+    
+    <div class="p-6">
+      <span class="text-sm font-semibold text-teal-600"></span>
+      <h3 class="text-xl font-bold mt-2 mb-3 text-teal-600" style="color: #42929d">Painel ONU-HABITAT "Accelerating the Urban Energy Transition through Integrated Action", dia 15/11</h3>
+      <p class="text-gray-600 mb-4">
+        1 ideia em 1 minuto para a implementação da Transição Energética em Cidades. 
+        O prof. Edmar de Almeida responde, "Foco no lado da demanda, mudança no padrão 
+        de comportamento de consumo e engajamento local para descarbonização". <br>
+        Esses são fatores-chave para a mudança!
+      </p>
+      <button class="font-semibold transition-colors" style="color: #42929d;" onmouseover="this.style.color='#42929d'" onmouseout="this.style.color='#D2AB00'" onclick="playVideo()">
+        Assista 
+        <i class="fas fa-arrow-right ml-1"></i>
+      </button>
+    </div>
+  </article>
+
+          
+           <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow news-card border-t-4 border-accent">
+            <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, #42929d 0%, #5ba3b2 100%);">
+              <img class="w-full h-full object-contain" src="/imagens/cop30/cni-destaque.jpg" alt="Edmar em painel da CNI na COP30">
+            </div>
+            <div class="p-6">
+              <span class="text-sm font-semibold" style="color: #42929d;"></span>
+              <h3 class="text-xl font-bold mt-2 mb-3" style="color: #42929d;">Painel “O Hidrogênio Como Uma Solução Potencial para Descarbonizar Diversos Setores da Economia”, dia 17/11 </h3>
+              <p class="text-gray-600 mb-4">O IEPUC apoia e colabora com a CNI na promoção do Hidrogênio Sustentável: uma alternativa limpa e estratégica para descarbonizar a indústria brasileira e torná-la mais ambientalmente responsável.</p>
+              
+                <a target="_blank" href="https://www.portaldaindustria.com.br/cni/canais/industria-sustentavel/temas-de-atuacao/energias-renovaveis/hidrogenio-sustentavel/" class="font-semibold transition-colors" style="color: #42929d;" onmouseover="this.style.color='#42929d'" onmouseout="this.style.color='#D2AB00'">Saiba + </a> 
+                <i class="fas fa-arrow-right ml-1 font-semibold transition-colors" style="color: #42929d;" onmouseover="this.style.color='#42929d'" onmouseout="this.style.color='#D2AB00'"></i>
+              
+            </div>
+          </article>
+          
+          <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow news-card border-t-4 border-primary">
+            <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, #42929d 0%, #5ba3b2 100%);">
+              <img src="/imagens/destaque/02.jpg" alt="FITS 2025 - Novembro na sede do Fecomercio" class="w-full h-full object-contain">
+            </div>
+            <div class="p-6">
+              <span class="text-sm font-semibold" style="color: #42929d;"></span>
+              <h3 class="text-xl font-bold mt-2 mb-3" style="color: #42929d;">O IEPUC na COP30</h3>
+              <p class="text-gray-600 mb-4"> Edmar Luiz Fagundes de Almeida representa o Instituto de Energia da Pontifícia Universidade Católica do Rio de Janeiro no painel que discute a Transição Energética nas Cidades e a descarbonização.</p>
+            
+              <a href="https://www.linkedin.com/posts/iepuc-rio_cop30-energiasrenovaveis-energia-activity-7395440299390627840-GCnK?utm_source=share&utm_medium=member_desktop&rcm=ACoAAASRBWIBfY7Dq8OeYIIaV8SRI4I1T133eCA" target="_blank" rel="noopener noreferrer" style="color: #42929d;" class="font-semibold this.style.color='#D2AB00'" onmouseout="this.style.color='#42929d'">Saiba +</a> <i class="fas fa-arrow-right ml-1 font-semibold transition-colors" style="color: #42929d;" onmouseover="this.style.color='#D2AB00'" onmouseout="this.style.color='#42929d'"></i>
+            
+            </div>
+          </article>
+          
+          
+
+         </div>
+      </div>
+    </section>
+
+
+
+    <!-- Modal -->
+     <!-- Modal Geração Híbrida -->
+    <div id="modalGHE" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8 modal-backdrop bg-black bg-opacity-70 transition-all duration-300 modal-hidden">
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl transition-all duration-300 transform scale-90">
+            
+            <!-- Modal Header -->
+            <div class="bg-primary-gradient text-white p-6 sm:p-8 rounded-t-2xl relative overflow-hidden">
+                <div class="absolute -top-1/2 -right-20 w-48 h-48 bg-white bg-opacity-10 rounded-full"></div>
+                
+                <button onclick="closeModal()" class="absolute top-4 right-4 sm:top-6 sm:right-6 bg-white bg-opacity-20 hover:bg-opacity-30 w-10 h-10 rounded-full flex items-center justify-center text-white transition-all duration-300 transform hover:rotate-90 close-btn">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+
+                <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                    <i class="fas fa-water text-2xl text-white"></i>
+                </div>
+
+                <h2 class="text-2xl sm:text-3xl font-bold mb-2 leading-tight">Geração Híbrida de Energia</h2>
+                <p class="text-base sm:text-lg opacity-90">Inovação e sustentabilidade energética</p>
+            </div>
+
+            <!-- Modal Content -->
+            <div class="p-6 sm:p-8 lg:p-10">
+                <p class="text-lg leading-relaxed text-gray-700 mb-6 text-justify">
+                    Neste eixo, destacamos a Usina Híbrida Piloto (350 kWh), projetada pelo IEPUC, com o financiamento da GALP, que está em fase final de construção na unidade PUC-Rio de Xerém (IMES). Essa Planta permite realizar experimentos de configurações híbridas de geração de energia para o atendimento de curvas de carga, considerando critérios operacionais, ambientais e econômicos.
+                </p>
+
+                <p class="text-lg leading-relaxed text-gray-700 mb-6 text-justify">
+                    O portfólio energético de oferta e armazenamento comporta energia solar fotovoltaica, baterias, geração térmica a diesel, geração térmica a gás natural, eletrolisador e gerador de hidrogênio, cilindros de hidreto metálico para adsorção de hidrogênio e célula a combustível de hidrogênio.
+                </p>
+
+                <p class="text-lg leading-relaxed text-gray-700 mb-6 text-justify">
+                    A partir da infraestrutura da UHP (Usina Híbrida Piloto IEPUC em Xerém), o IEPUC está investigando soluções que possam atender, inclusive, às necessidades na região da Amazônia, onde existe uma grande demanda para substituição da geração a diesel nos sistemas isolados.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Transição Energética -->
+    <div id="ModalTE" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8 modal-backdrop bg-black bg-opacity-70 transition-all duration-300 modal-hidden">
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl transition-all duration-300 transform scale-90">
+            
+            <!-- Modal Header -->
+            <div class="text-white p-6 sm:p-8 rounded-t-2xl relative overflow-hidden" style="background: linear-gradient(135deg, #D2AB00 0%, #e6c533 100%);">
+                <button onclick="closeModal()" class="absolute top-4 right-4 sm:top-6 sm:right-6 bg-white bg-opacity-20 hover:bg-opacity-30 w-10 h-10 rounded-full flex items-center justify-center text-white transition-all duration-300 transform hover:rotate-90 close-btn">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+
+                <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                    <i class="fas fa-flask text-2xl text-white"></i>
+                </div>
+
+                <h2 class="text-2xl sm:text-3xl font-bold mb-2 leading-tight">Transição Energética</h2>
+                <p class="text-base sm:text-lg opacity-90">Rumo à descarbonização</p>
+            </div>
+
+            <!-- Modal Content -->
+            <div class="p-6 sm:p-8 lg:p-10">
+                <p class="text-lg leading-relaxed text-gray-700 mb-6 text-justify">
+                    Estudos e inovação voltados para descarbonização da economia e aumento da eficiência energética. Os projetos de pesquisa buscam alinhamento aos compromissos globais, políticas nacionais e oportunidades de inovação e empreendedorismo.
+
+                </p>
+
+                <p class="text-lg leading-relaxed text-gray-700 mb-6 text-justify">
+                    Além da parceria com a KPMG e os estudos desenvolvidos no âmbito do Núcleo Temático, o IEPUC vem realizando projetos de pesquisa e serviços nas subáreas desse eixo de Transição Energética. 
+                </p>
+
+                <p class="text-lg leading-relaxed text-gray-700 mb-6 text-justify">
+                <a href="kpmg.html" target="_blank" rel="noopener noreferrer"> Conheça um pouco mais sobre a parceria IEPUC & KPMG para Transição Energética.</a>
+                </p>
+                 <p class="text-lg leading-relaxed text-gray-700 mb-6 text-justify">
+                 <a href="https://www.iepuc.puc-rio.br/dados/kpmg/Seminario-IEPUCTransi%C3%A7%C3%A3oEnergetica_e_as_cidades-2024.pdf" target="_blank"> Download da apresentação "Transição Energética nas Cidades: Agenda e
+Oportunidades" </a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Educação Continuada -->
+    <div id="ModalECE" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8 modal-backdrop bg-black bg-opacity-70 transition-all duration-300 modal-hidden">
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl transition-all duration-300 transform scale-90">
+            
+            <!-- Modal Header -->
+            <div class="bg-primary-gradient text-white p-6 sm:p-8 rounded-t-2xl relative overflow-hidden">
+                <button onclick="closeModal()" class="absolute top-4 right-4 sm:top-6 sm:right-6 bg-white bg-opacity-20 hover:bg-opacity-30 w-10 h-10 rounded-full flex items-center justify-center text-white transition-all duration-300 transform hover:rotate-90 close-btn">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+
+                <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                    <i class="fas fa-graduation-cap text-2xl text-white"></i>
+                </div>
+
+                <h2 class="text-2xl sm:text-3xl font-bold mb-2 leading-tight">Educação Continuada em Energia</h2>
+                <p class="text-base sm:text-lg opacity-90">Formação de excelência</p>
+            </div>
+
+            <!-- Modal Content -->
+            <div class="p-6 sm:p-8 lg:p-10">
+                <p class="text-lg leading-relaxed text-gray-700 mb-6 text-justify">
+                O IEPUC acredita na formação continuada como um importante instrumento de transformação, representando um canal de transferência direta dos conhecimentos para a indústria de energia e reforçando a cooperação e parceria com o mercado e a sociedade. 
+                </p>
+
+                <p class="text-lg leading-relaxed text-gray-700 mb-6 text-justify">
+                    Nossos programas educacionais são desenvolvidos para atender às demandas específicas do setor energético, oferecendo formação de alta qualidade e atualizada com as tendências do mercado.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Cursos Extensão -->
+    <div id="modalCursosExtensao" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8 modal-backdrop bg-black bg-opacity-70 transition-all duration-300 modal-hidden">
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl transition-all duration-300 transform scale-90">
+            
+            <!-- Modal Header -->
+            <div class="bg-primary-gradient text-white p-6 sm:p-8 rounded-t-2xl relative overflow-hidden">
+                <button onclick="closeModal()" class="absolute top-4 right-4 sm:top-6 sm:right-6 bg-white bg-opacity-20 hover:bg-opacity-30 w-10 h-10 rounded-full flex items-center justify-center text-white transition-all duration-300 transform hover:rotate-90 close-btn">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+
+                <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                    <i class="fas fa-graduation-cap text-2xl text-white"></i>
+                </div>
+
+                <h2 class="text-2xl sm:text-3xl font-bold mb-2 leading-tight">Cursos de Extensão</h2>
+                <p class="text-base sm:text-lg opacity-90"></p>
+            </div>
+
+            <!-- Modal Content -->
+            <div class="p-6 sm:p-8 lg:p-10">
+                <p class="text-lg leading-relaxed text-gray-700 mb-6 text-justify">
+                <a href="https://ccec.puc-rio.br/site/folder?nCurso=comercializacao-e-precificacao-de-petroleo-e-combustiveis&nInst=cce"> Comercialização e Precificação de Petróleo e Combustíveis </a>
+                  
+                </p>
+
+                <p class="text-lg leading-relaxed text-gray-700 mb-6 text-justify">
+                 <a href="https://ccec.puc-rio.br/site/Folder?nCurso=economia-e-regulacao-da-mudanca-climatica&nInst=CCE">Economia e Regulação da Mudança Climática</a>
+                </p>
+
+                <p class="text-lg leading-relaxed text-gray-700 mb-6 text-justify">
+                 <a href="https://ccec.puc-rio.br/site/folder?nCurso=comercializacao-e-precificacao-do-gas-natural-no-mercado-internacional-e-nacional&nInst=cce">Comercialização e Precificação do Gás Natural no Mercado Internacional e Nacional
+</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Graduação -->
+    <div id="ModalEmenta" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8 modal-backdrop bg-black bg-opacity-70 transition-all duration-300 modal-hidden">
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl transition-all duration-300 transform scale-90">
+            
+            <!-- Modal Header -->
+            <div class="bg-primary-gradient text-white p-6 sm:p-8 rounded-t-2xl relative overflow-hidden">
+                <button onclick="closeModal()" class="absolute top-4 right-4 sm:top-6 sm:right-6 bg-white bg-opacity-20 hover:bg-opacity-30 w-10 h-10 rounded-full flex items-center justify-center text-white transition-all duration-300 transform hover:rotate-90 close-btn">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+
+                <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                    <i class="fas fa-graduation-cap text-2xl text-white"></i>
+                </div>
+
+                <h2 class="text-2xl sm:text-3xl font-bold mb-2 leading-tight">Ementa de Disciplina  </h2> 
+                <h2 class="text-2xl sm:text-3xl font-bold mb-2 leading-tight">MEC2013 | TOP ESP DE ENGENHARIA MECANICA</h2>
+                <p class="text-base sm:text-lg opacity-90"></p>
+            </div>
+
+            <!-- Modal Content -->
+                <p class="text-lg leading-relaxed text-gray-700 mb-6 text-justify">
+                Disciplina de conteúdo variável. </p> 
+                <p class="text-lg leading-relaxed text-gray-700 mb-6 text-justify">
+                Em 2024.1-TRANSIÇÃO ENERGÉTICA. </p>
+                <p class="text-lg leading-relaxed text-gray-700 mb-6 text-justify">
+                Os sistemas de energia em todo o mundo estão passando por enormes transformações. Energia eólica e solar, hidrogênio, além de novos padrões de uso e mecanismos de mercado, são fatores que podem contribuir para a descarbonização do setor energético e garantir uma oferta de energia segura e acessível camadas da população mundial que hoje não tem restrições de acesso à fontes de energia modernas. 
+                </p>
+                <p class="text-lg leading-relaxed text-gray-700 mb-6 text-justify">
+                Esta disciplina, de caráter interdisciplinar, busca justamente apresentar e debater as de transformações em curso no setor energético internacional e nacional, impulsionada pelas políticas de combate às mudanças climáticas e pelo processo de inovações tecnológicas nos diferentes segmentos da indústria energética. O objetivo do curso é fornecer um conjunto de elementos conceituais, teóricos e empíricos que permita analisar as transformações das estruturas de mercado no setor de energia, a partir das mudanças nas políticas energéticas, da evolução dos mercados de energia e das evoluções tecnológicas observadas nessas indústrias.
+                </p>
+               <p class="text-lg leading-relaxed text-gray-700 mb-6 text-justify">
+                Pré-requisitos : Nenhum pre-requisito encontrado para MEC2013
+                
+                <p class="text-lg leading-relaxed text-gray-700 mb-6 text-justify">
+                Co-requisitos: Nenhum co-requisito encontrado para MEC2013
+
+               </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Trilhas -->
+<!-- Modal Trilhas -->
+<div id="ModalTrilha" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8 modal-backdrop bg-black bg-opacity-70 transition-all duration-300 modal-hidden">
+  <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl transition-all duration-300 transform scale-90">
+    
+    <!-- Cabeçalho -->
+    <div class="bg-primary-gradient text-white p-6 sm:p-8 rounded-t-2xl relative overflow-hidden">
+      <button onclick="closeModal('ModalTrilha')" 
+              class="absolute top-4 right-4 sm:top-6 sm:right-6 bg-white bg-opacity-20 hover:bg-opacity-30 
+                     w-10 h-10 rounded-full flex items-center justify-center text-white transition-all 
+                     duration-300 transform hover:rotate-90 close-btn">
+        <i class="fas fa-times text-lg"></i>
+      </button>
+
+      <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+        <i class="fas fa-book text-2xl text-white"></i>
+      </div>
+
+      <h2 class="text-2xl sm:text-3xl font-bold mb-2 leading-tight">Trilha de Conhecimento</h2>
+      <p class="text-base sm:text-lg opacity-90">Um percurso de aprendizado em energia e gestão</p>
+    </div>
+
+    <!-- Conteúdo -->
+    <div class="p-6 sm:p-8 lg:p-10">
+      <!-- Timeline -->
+      <div class="space-y-6">
+        <div class="flex items-start">
+          <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-bold">1</div>
+          <p class="ml-4 text-gray-700"><strong>Fundamentos</strong> – Bases em energia, mercado e regulação.</p>
+        </div>
+        <div class="flex items-start">
+          <div class="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-white font-bold">2</div>
+          <p class="ml-4 text-gray-700"><strong>Tecnologias</strong> – Fontes renováveis, sistemas elétricos e inovações.</p>
+        </div>
+        <div class="flex items-start">
+          <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-bold">3</div>
+          <p class="ml-4 text-gray-700"><strong>Gestão & Estratégia</strong> – Modelos de negócios, regulação e cases.</p>
+        </div>
+        <div class="flex items-start">
+          <div class="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-white font-bold">4</div>
+          <p class="ml-4 text-gray-700"><strong>Aplicação Prática</strong> – Projetos, análises e simulações.</p>
+        </div>
+      </div>
+
+      <!-- Ações -->
+      <div class="mt-10 flex justify-between items-center">
+        <button onclick="closeModal('ModalTrilha')" 
+                class="px-5 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100 transition">
+          Fechar
+        </button>
+        <a href="ensino/trilhas.html" 
+           class="px-6 py-2 rounded-lg text-white font-semibold shadow-md transition hover:shadow-lg" 
+           style="background-color:#42929d;">
+          Ver trilha completa →
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<%- include("partials/footer") %>
+
+<!-- Estilos atualizados para a nova paleta -->
+   <style>
+        .bg-primary-gradient {
+            background: linear-gradient(135deg, #42929d 0%, #5ba3b2 100%);
+        }
+        .bg-highlight-gradient {
+            background: linear-gradient(135deg, rgba(66, 146, 157, 0.1) 0%, rgba(91, 163, 178, 0.1) 100%);
+        }
+        .modal-backdrop {
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .modal-hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .modal-visible {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+    </style>
+    
+
+<script src="/src/app.js?v=26082026"></script>
+<script>
+    $(document).ready(function() {
+    
+
+    // ==========================================
+    // CÓDIGO DO MENU MOBILE
+    // ==========================================
+
+    $('#mobile-menu-button').on('click', function() {
+        $('#mobile-menu').toggleClass('hidden');
+    });
+
+    // ==========================================
+    // CÓDIGO DE NAVEGAÇÃO SUAVE
+    // ==========================================
+
+    $('a[href^="#"]').on('click', function(e) {
+        const target = $(this.getAttribute('href'));
+        if (target.length) {
+            e.preventDefault();
+            $('html, body').stop().animate({
+                scrollTop: target.offset().top - 100
+            }, 1000);
+        }
+    });
+
+
+    // ==========================================
+    // CÓDIGO PARA CARREGAR MATÉRIAS
+    // ==========================================
+
+   
+}); 
+//Linhas acima comentadas para teste do script gs_loader
+
+</script>
+
+
+<script src="/src/contador-stats.js"></script>
+
+<script>
+    const videoContainer = document.getElementById('videoContainer');
+    const thumbnail = document.getElementById('thumbnail');
+    const videoPlayer = document.getElementById('videoPlayer');
+    
+    function playVideo() {
+      thumbnail.classList.add('hidden');
+      videoPlayer.classList.remove('hidden');
+      videoPlayer.play();
+    }
+    
+    // Também permite clicar na área do vídeo
+    videoContainer.addEventListener('click', function(e) {
+      if (e.target === videoContainer || e.target === thumbnail || e.target.closest('#thumbnail')) {
+        playVideo();
+      }
+    });
+    
+    // Quando o vídeo terminar, pode opcionalmente voltar ao thumbnail
+    videoPlayer.addEventListener('ended', function() {
+      // Descomente as linhas abaixo se quiser voltar ao thumbnail quando o vídeo terminar
+      // videoPlayer.classList.add('hidden');
+      // thumbnail.classList.remove('hidden');
+    });
+  </script>
+<script src="src/mysql_home_materias_loader.js"></script>
+
+</body>
+</html>

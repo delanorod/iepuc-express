@@ -1,0 +1,247 @@
+<% const pageTitle = "Página Inicial"; %>
+<%- include("partials/header", { pageTitle: pageTitle }) %>
+
+
+<link rel="stylesheet" href="/src/styles.css">
+
+<style>
+    /* Estilos adicionais para os cards */
+    .media-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza os itens horizontalmente */
+    width: 100%;    
+    height: 100%;
+    object-fit: cover;
+}
+    
+    .media-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+    
+.media-card-image {
+    width: 100%;
+    /* A altura deve ser auto para o aspect-ratio funcionar */
+    height: auto; 
+    display: block;
+    object-fit: cover; /* Garante o preenchimento total */
+    object-position: center;
+    background-color: #f3f4f6;
+}
+
+/* Suas proporções já definidas vão funcionar agora: */
+@media (max-width: 768px) { .media-card-image { aspect-ratio: 1; } }
+@media (min-width: 769px) and (max-width: 1024px) { .media-card-image { aspect-ratio: 4/3; } }
+@media (min-width: 1025px) { .media-card-image { aspect-ratio: 16/9; } }
+    
+    .media-card-content {
+        padding: 1.5rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .media-card-source {
+        font-size: 0.875rem;
+        color: #0891b2;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    
+    .media-card-title {
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 0.75rem;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    
+    .media-card-description {
+        font-size: 0.875rem;
+        color: #64748b;
+        margin-bottom: 1rem;
+        flex-grow: 1;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        line-height: 1.6;
+    }
+    
+    .media-card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: auto;
+        padding-top: 1rem;
+        border-top: 1px solid #e2e8f0;
+    }
+    
+    .media-card-date {
+        font-size: 0.875rem;
+        color: #94a3b8;
+    }
+    
+    .media-card-link {
+        color: #0891b2;
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 0.875rem;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        transition: color 0.2s ease;
+    }
+    
+    .media-card-link:hover {
+        color: #0e7490;
+    }
+</style>
+
+<!-- Blog Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Page Title -->
+        <div class="mb-12 text-center">
+            <h2 class="text-3xl font-bold text-cyan-600 mb-4 titulo-destaque">Venezuela e a nova geopolítica do petróleo</h2>
+            <p class="text-gray-600 max-w-3xl mx-auto"> </p>
+        </div>
+
+        <!-- Loading indicator -->
+        <div id="loading" class="text-center py-8">
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-900"></div>
+            <p class="mt-2 text-gray-600">Carregando matérias...</p>
+        </div>
+
+        <!-- Error message -->
+        <div id="error" class="text-center py-8 hidden">
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                <p>Erro ao carregar as matérias. Tente novamente mais tarde.</p>
+                <p class="text-sm mt-2">
+                    Verifique se o Google Sheets está publicado na web e acessí­vel publicamente.
+                </p>
+            </div>
+        </div>
+
+        <!-- Blog Posts Grid - Agora com 3 cards por linha -->
+        <!-- Este container serÃ¡ preenchido automaticamente pelo JavaScript -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden" id="cards">
+            <!-- As matÃ©rias serÃ£o inseridas aqui automaticamente -->
+        </div>
+
+        <!-- Load More Button -->
+        <div class="text-center mt-12 hidden" id="loadMoreContainer">
+            <button id="loadMore" class="bg-cyan-700 hover:bg-cyan-800 text-white font-medium py-3 px-8 rounded-lg transition-colors flex items-center mx-auto">
+                <i class="fas fa-plus-circle mr-2"></i> Carregar mais matérias
+            </button>
+        </div>
+    </main>
+
+
+<div class="container mx-auto px-4 py-2 flex justify-end">
+
+</div>
+<br>
+<!-- 
+<script src="/src/mysql_frontend_loader.js"></script>
+ -->
+<script src="/src/google-sheets-loadercards2.js"></script>
+
+<!-- Script adicional para garantir o layout de cards -->
+<script>
+    // Este script modifica a estrutura HTML gerada pelo google-sheets-loader.js
+    // para o formato de cards
+    
+    // Monitora mudanças no container de matérias
+    const cardsContainer = document.getElementById('cards');
+    
+    if (cardsContainer) {
+        // Observer para detectar quando as matérias são carregadas
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                    formatarComoCards();
+                }
+            });
+        });
+        
+        observer.observe(cardsContainer, {
+            childList: true,
+            subtree: true
+        });
+    }
+    
+    function formatarComoCards() {
+        const articles = cardsContainer.querySelectorAll('article');
+        
+        articles.forEach(article => {
+            // Se já foi formatado, pula
+            if (article.classList.contains('media-card')) {
+                return;
+            }
+            
+            // Adiciona classe de card
+            article.classList.add('media-card');
+            
+            // Reorganiza a estrutura interna se necessÃ¡rio
+            const img = article.querySelector('img');
+            const content = article.querySelector('div');
+            
+            if (img) {
+                img.classList.add('media-card-image');
+            }
+            
+            if (content) {
+                content.classList.add('media-card-content');
+                
+                // Formata elementos internos
+                const source = content.querySelector('.text-cyan-600, [class*="fonte"], [class*="source"]');
+                if (source) {
+                    source.classList.add('media-card-source');
+                }
+                
+                const title = content.querySelector('h3, .titulo, [class*="title"]');
+                if (title) {
+                    title.classList.add('media-card-title');
+                }
+                
+                const description = content.querySelector('p, .descricao, [class*="description"]');
+                if (description) {
+                    description.classList.add('media-card-description');
+                }
+                
+                const footer = content.querySelector('.flex, [class*="footer"]');
+                if (footer) {
+                    footer.classList.add('media-card-footer');
+                }
+                
+                const date = content.querySelector('[class*="date"], time');
+                if (date) {
+                    date.classList.add('media-card-date');
+                }
+                
+                const link = content.querySelector('a');
+                if (link) {
+                    link.classList.add('media-card-link');
+                }
+            }
+        });
+    }
+</script>
+
+
+<div class="container mx-auto px-4 py-2 flex justify-end">
+  <%- include("partials/voltar") %>
+
+</div>
+<br>
+<%- include("partials/footer") %>
