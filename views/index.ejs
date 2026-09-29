@@ -1,5 +1,5 @@
 <% const pageTitle = "Página Inicial"; %>
-<%- include("partials/header", { pageTitle: pageTitle }) %>
+<%- include("./partials/header", { pageTitle: pageTitle }) %>
 <!-- versao 27082026v2 -->
   <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
@@ -290,6 +290,21 @@ Vem atuando em atendimento às demandas do Setor de energia numa abordagem trans
 
         <div class="grid md:grid-cols-2 gap-8">
           
+            <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow news-card border-t-4 border-accent">
+            <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, #42929d 0%, #5ba3b2 100%);">
+              <img class="w-full h-full object-contain" src="/imagens/destaque/roge-2026.jpg" alt="ROGe 2026">
+            </div>
+            <div class="p-6">
+              <span class="text-sm font-semibold" style="color: #42929d;"></span>
+              <h3 class="text-xl font-bold mt-2 mb-3" style="color: #42929d;">Nossos pesquisadores na ROGe 2026</h3>
+              <p class="text-gray-600 mb-4">Artigos apresentados, perguntas respondidas, contatos feitos!
+Parabéns a Helaine Sales, Sergio Castiñeiras Filho, Gustavo Soares e Vinicius Santos Pereira pelo trabalho e pela apresentação! </p>
+              
+                <a target="_blank" href="https://www.linkedin.com/feed/update/urn:li:activity:7510406498653622272" class="font-semibold transition-colors" style="color: #42929d;" onmouseover="this.style.color='#42929d'" onmouseout="this.style.color='#D2AB00'">Saiba + </a> 
+                <i class="fas fa-arrow-right ml-1 font-semibold transition-colors" style="color: #42929d;" onmouseover="this.style.color='#42929d'" onmouseout="this.style.color='#D2AB00'"></i>
+              
+            </div>
+          </article>
                             
           <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow news-card border-t-4 border-accent">
             <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, #D2AB00 0%, #e6c533 100%);">
@@ -305,24 +320,7 @@ Vem atuando em atendimento às demandas do Setor de energia numa abordagem trans
               
             </div>
           </article>
-
-         
-           <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow news-card border-t-4 border-accent">
-            <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, #42929d 0%, #5ba3b2 100%);">
-              <img class="w-full h-full object-contain" src="/imagens/destaque/munique-2026.jpg" alt="10th International Conference on Power Energy Systems and Applications (ICoPESA 2026)">
-            </div>
-            <div class="p-6">
-              <span class="text-sm font-semibold" style="color: #42929d;"></span>
-              <h3 class="text-xl font-bold mt-2 mb-3" style="color: #42929d;">IEPUC em Munique! </h3>
-              <p class="text-gray-600 mb-4">Os pesquisadores Marco Antonio Haikal Leite e Sergio Castiñeiras Filho representaram o IEPUC na 10th International Conference on Power Energy Systems and Applications (ICoPESA 2026), realizada em Munique, na Alemanha, entre 27 e 30 de julho.</p>
               
-                <a target="_blank" href="https://www.linkedin.com/posts/iepuc-pucrio-icopesa2026-share-7490864062105292800-CC06/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAASRBWIBfY7Dq8OeYIIaV8SRI4I1T133eCA" class="font-semibold transition-colors" style="color: #42929d;" onmouseover="this.style.color='#42929d'" onmouseout="this.style.color='#D2AB00'">Saiba + </a> 
-                <i class="fas fa-arrow-right ml-1 font-semibold transition-colors" style="color: #42929d;" onmouseover="this.style.color='#42929d'" onmouseout="this.style.color='#D2AB00'"></i>
-              
-            </div>
-          </article>
-
-            
         </div>
       </div>
     </section>

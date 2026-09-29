@@ -1,0 +1,7 @@
+
+########      Leia atentamente as informações abaixo   ##########
+
+1. Os arquivos do site estão localizados em /var/www ou em um ponteiro (www) na raiz do seu usuário.
+2. Destruição de Arquivos: Arquivos armazenados fora do diretório WWW serão destruídos automaticamente e sem aviso prévio. Esses arquivos não possuem cópia de segurança.
+3. Backups no Servidor: Arquivos de backup não devem ser salvos dentro do servidor, mesmo que estejam na pasta WWW.
+
