@@ -36,6 +36,14 @@ $(document).ready(function() {
   // Dados dos slides
   const slides = [
 
+    {
+      image: "imagens/slider/Students-.jpg?v=191026",
+      title: "Universities for Goal 13: A Student Competition for Climate Solutions",
+      description: "The time to act is now! Students from @PUCRIO are invited to take on the challenge of the energy transition. Together with the UN Sustainable Development Solutions Network (SDSN) and Siemens Energy, the 6th Edition of the Universities for Goal 13 Competition & Award empowers students to design innovative, practical solutions for a sustainable future",
+      buttonText: "Saiba mais",
+      slideUrl: "https://www.unsdsn.org/our-work/universities-for-goal-13-a-student-competition-for-climate-solutions-hosted-by-sdsn-and-siemens-energy/"
+    },
+
   {
       image: "imagens/slider/boletin-nova-secao.jpg?v=20260826",
       title: "Boletim Biometano ",
